@@ -91,6 +91,9 @@ void loop() {
 Pour une animation, on peut déclarer plusieurs frames et un tableau de pointeurs :
 
 ```c
+extern "C" void matrixWrite(const uint32_t *buf);
+extern "C" void matrixBegin();
+
 const uint32_t Heart1[4] = {
 	0x108883b8,
 	0x20820210,
