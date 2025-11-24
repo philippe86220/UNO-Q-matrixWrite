@@ -138,6 +138,14 @@ out[mot] |= (1u << bit);
 
 L’éditeur Python automatise ce calcul et affiche le résultat directement au format exigé par `matrixWrite()`.
 
-# Crédit
+---
+
+# Capture d'écran :
+
+![Exemple 1](Assets/capture1.png)
+
+---
+
+### Crédit
 Outil développé par [philippe86220],  
 avec l’aide de ChatGPT (modèle GPT-5.1 Thinking) pour la conception de l’interface et la mise en forme du code.
