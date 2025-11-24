@@ -151,7 +151,8 @@ index = y * MATRIX_WIDTH + x
 ```
 - Numérotation en ligne :
 
-![numerotation](../../Assets/numerotation.png)
+![numerotation](../Assets/numerotation.png)
+
 
 
 
