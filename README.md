@@ -133,7 +133,7 @@ void setup() {
 }
 
 void loop() {
-  playAnimation(HeartAnim, 8, 1, 50);
+  playAnimation(HeartAnim, 3, 1, 1000);
 }
 ```
 Grâce à cet éditeur, chaque frame de l’animation peut être dessinée visuellement puis exportée en uint32_t[4].
