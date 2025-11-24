@@ -138,6 +138,20 @@ void loop() {
   playAnimation(HeartAnim, 3, 1, 1000);
 }
 ```
+`void playAnimation(const uint32_t* frames[], int frameCount, int repeat, int frameDelay)` :
+- ici dans la loop `repeat = 1`, il y a des cas où on attend un signal du coeur linux et  
+  dans ce cas repeat peut être > 1. (voir l'exemple "Hey Arduino!" dans Arduino App Lab)
+
+
+
+| Paramètre      | Signification                                      |
+| -------------- | -------------------------------------------------- |
+| **frames[]**   | Tableau de pointeurs vers des arrays `uint32_t[4]` |
+| **frameCount** | Nombre total d’images dans l’animation             |
+| **repeat**     | Nombre de répétitions de l’animation               |
+| **frameDelay** | Pause entre deux images (ms)                       |
+
+
 Grâce à cet éditeur, chaque frame de l’animation peut être dessinée visuellement puis exportée en uint32_t[4].
 
 ---
