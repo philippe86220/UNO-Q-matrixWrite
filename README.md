@@ -141,8 +141,7 @@ void loop() {
 `void playAnimation(const uint32_t* frames[], int frameCount, int repeat, int frameDelay)` :
 
 Dans la fonction `loop()`, on utilise généralement `repeat = 1`, puisque `loop()` est elle-même appelée  
-en permanence par le framework Arduino.
-Dans d’autres cas, par exemple lorsqu’on attend un signal en provenance du cœur Linux (comme dans  
+en permanence par le framework Arduino. Dans d’autres cas, par exemple lorsqu’on attend un signal en provenance du cœur Linux (comme dans 
 l’exemple **“Hey Arduino!”** d’Arduino App Lab), on peut utiliser `repeat > 1` pour rejouer plusieurs fois la  
 même animation après la détection de l’événement.
 
