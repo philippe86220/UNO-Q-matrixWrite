@@ -147,13 +147,8 @@ index = y * MATRIX_WIDTH + x
 ```
 Numérotation en ligne :
 
-```python
-y=0 : index 0  1  2 ... 12
-y=1 : index 13 14 15 ... 25
-y=2 : index 26 ...
-...
-y=7 : index 91 ... 103
-```
+![numerotation](Assets/numerotation.png)
+
 
 ## 5.2 Détermination du mot et du bit
 
