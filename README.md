@@ -66,7 +66,7 @@ const uint32_t frame[4] = {
 
 ---
 
-# Intégration dans un sketch C++ pour UNO Q :
+# Intégration dans un sketch C++ pour UNO Q (Arduino App Lab) :
 Un exemple minimal :
 ```c
 extern "C" void matrixWrite(const uint32_t *buf);
