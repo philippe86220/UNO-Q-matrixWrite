@@ -247,10 +247,10 @@ Index d'une LED :
     index = y * 13 + x
 
 Mot 32 bits :
-    mot = index // 32   (0..3)
+    mot = index // 32   (0 à 3)
 
 Bit dans ce mot :
-    bit = index % 32    (0..31)
+    bit = index % 32    (0 à 31)
 
 Mise a 1 :
     out[mot] |= (1u << bit);
