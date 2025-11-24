@@ -36,6 +36,108 @@ Dans un terminal, à la racine du projet :
 python3 matrix.py
 ```
 
+ou sous Windows :
+```bash
+python matrix.py
+```
+
+Une fenêtre s’ouvre avec :
+- en haut : la grille 13x8,
+- au milieu : les boutons « Générer les 4 mots », « Effacer », « Copier »,
+- en bas : la zone texte avec le code C généré.
+## Utilisation
+1. Cliquer sur les cases de la grille pour allumer / éteindre des LEDs.
+2. Cliquer sur « Générer les 4 mots ».
+3. Le bas de la fenêtre affiche un bloc C de la forme :
+
+```c
+// Tableau a transmettre a matrixWrite()
+const uint32_t frame[4] = {
+    0x20360000,
+    0x11010409,
+    0x00100140,
+    0x00000000
+};
+```
+4. Cliquer sur « Copier » pour copier ce code dans le presse-papiers.
+5. Coller ce bloc dans votre sketch UNO Q.
+
+---
+
+# Intégration dans un sketch C++ pour UNO Q :
+Un exemple minimal :
+```c
+extern "C" void matrixWrite(const uint32_t *buf);
+extern "C" void matrixBegin();
+
+const uint32_t frame[4] = {
+    0x20360000,
+    0x11010409,
+    0x00100140,
+    0x00000000
+};
+
+void setup() {
+    matrixBegin();
+    matrixWrite(frame);  // affiche le motif sur la matrice
+}
+
+void loop() {
+    // rien à faire ici pour un motif statique
+}
+
+```
+
+Pour une animation, on peut déclarer plusieurs frames et un tableau de pointeurs :
+
+```c
+const uint32_t Heart1[4] = { /* ... */ };
+const uint32_t Heart2[4] = { /* ... */ };
+const uint32_t Heart3[4] = { /* ... */ };
+
+const uint32_t* HeartAnim[] = {
+    Heart1,
+    Heart2,
+    Heart3
+};
+
+void playAnimation(const uint32_t* frames[], int frameCount, int repeat, int frameDelay) {
+    for (int r = 0; r < repeat; r++) {
+        for (int i = 0; i < frameCount; i++) {
+            matrixWrite(frames[i]);
+            delay(frameDelay);
+        }
+    }
+}
+```
+Grâce à cet éditeur, chaque frame de l’animation peut être dessinée visuellement puis exportée en uint32_t[4].
+
+---
+
+# Principe de l’encodage (résumé) :
+
+- La matrice comporte 13 colonnes × 8 lignes = 104 LEDs.
+- Les LEDs sont numérotées ligne par ligne :
+
+```text
+index = y * 13 + x   // x = 0 à 12, y = 0 à 7
+```
+Chaque LED correspond à un bit dans un des 4 mots de 32 bits :
+
+```text
+mot = index // 32    // 0 à 3
+bit = index % 32     // 0 à 31
+```
+
+- Si la LED est allumée, on met à 1 le bit correspondant :
+
+```c
+out[mot] |= (1u << bit);
+```
 
 
+L’éditeur Python automatise ce calcul et affiche le résultat directement au format exigé par `matrixWrite()`.
 
+# Crédit
+Outil développé par [philippe86220],  
+avec l’aide de ChatGPT (modèle GPT-5.1 Thinking) pour la conception de l’interface et la mise en forme du code.
