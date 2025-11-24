@@ -91,9 +91,24 @@ void loop() {
 Pour une animation, on peut déclarer plusieurs frames et un tableau de pointeurs :
 
 ```c
-const uint32_t Heart1[4] = { /* ... */ };
-const uint32_t Heart2[4] = { /* ... */ };
-const uint32_t Heart3[4] = { /* ... */ };
+const uint32_t Heart1[4] = {
+	0x108883b8,
+	0x20820210,
+	0x280220,
+	0x2
+};
+const uint32_t Heart2[4] = {
+  0x1988c7fc,
+	0x60c60330,
+	0x6c0630,
+	0x7
+ };
+const uint32_t Heart3[4] = {
+  0x1f88effe,
+	0xe0ee03f0,
+	0x80ee0e38,
+	0xf
+};
 
 const uint32_t* HeartAnim[] = {
     Heart1,
@@ -108,6 +123,16 @@ void playAnimation(const uint32_t* frames[], int frameCount, int repeat, int fra
             delay(frameDelay);
         }
     }
+}
+
+void setup() {
+  matrixBegin();
+}
+
+void loop() {
+  if (awake) {
+    playAnimation(HeartAnim, 8, 1, 50);
+  }
 }
 ```
 Grâce à cet éditeur, chaque frame de l’animation peut être dessinée visuellement puis exportée en uint32_t[4].
