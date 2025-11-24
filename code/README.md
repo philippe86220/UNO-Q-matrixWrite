@@ -6,9 +6,9 @@ MATRIX_HEIGHT = 8
 CELL_SIZE = 40  # taille des carres en pixels
 ```
 
-- MATRIX_WIDTH : nombre de colonnes (13).
-- MATRIX_HEIGHT : nombre de lignes (8).
-- CELL_SIZE : taille en pixels d’un “pixel LED” dans le Canvas (ici 40 × 40 px).
+- `MATRIX_WIDTH` : nombre de colonnes (13).
+- `MATRIX_HEIGHT` : nombre de lignes (8).
+- `CELL_SIZE` : taille en pixels d’un “pixel LED” dans le Canvas (ici 40 × 40 px).
 
 ```python
 self.led_state = [
@@ -16,9 +16,9 @@ self.led_state = [
     for _ in range(MATRIX_HEIGHT)
 ]
 ```
-- led_state[y][x] vaut :
-  - False : LED éteinte
-  - True : LED allumée
+- `led_state[y][x]` vaut :
+  - `False` : LED éteinte
+  - `True` : LED allumée
 - C’est la représentation logique de la matrice.
 
 ---
@@ -34,8 +34,8 @@ self.led_state = [
 )
 ```
 
-Le Canvas est une surface de dessin de Tkinter.
-Sa taille est exactement 13 cases × 8 cases, chacune de CELL_SIZE pixels.
+- Le `Canvas` est une surface de dessin de Tkinter.
+- Sa taille est exactement 13 cases × 8 cases, chacune de `CELL_SIZE` pixels.
 
 ## 2.1 Tableau des rectangles
 ```python
@@ -44,8 +44,8 @@ self.rects = [
     for _ in range(MATRIX_HEIGHT)
 ]
 ```
-self.rects[y][x] contiendra l’ID du rectangle dessiné dans le Canvas pour la LED (x, y).
-Cela permet ensuite de changer facilement sa couleur.
+- `self.rects[y][x]` contiendra l’ID du rectangle dessiné dans le Canvas pour la LED `(x, y)`.
+- Cela permet ensuite de changer facilement sa couleur.
 
 ## 2.2 Dessin de chaque “pixel LED”
 
@@ -63,21 +63,25 @@ for y in range(MATRIX_HEIGHT):
         )
         self.rects[y][x] = rect
 ```
-La matrice est parcourue en lignes (y) puis colonnes (x).
-Chaque LED est représentée par un rectangle sur le Canvas.
-Coordonnées du rectangle
+- La matrice est parcourue en lignes (`y`) puis colonnes (`x`).
+- Chaque LED est représentée par un rectangle sur le Canvas.
+
+**Coordonnées du rectangle**
 Pour une LED en position (x, y) :
-(x0, y0) = coin haut-gauche
-(x1, y1) = coin bas-droit
+- `(x0, y0)` = coin **haut-gauche**
+- `(x1, y1)` = coin **bas-droit**
+```text
 (x0,y0)------------+
 |      LED         |
 |   CELL_SIZE      |
 +------------(x1,y1)
-Avec CELL_SIZE = 40 :
-LED (0,0) → rectangle de (0, 0) à (38, 38)
-LED (1,0) → rectangle de (40, 0) à (78, 38)
-etc.
-Le - 2 sur x1 et y1 laisse un petit espace entre les cases.
+```
+Avec ```CELL_SIZE = 40``` :  
+- LED (0,0) → rectangle de (0, 0) à (38, 38)
+- LED (1,0) → rectangle de (40, 0) à (78, 38)
+- etc.
+- 
+Le `- 2` sur `x1` et `y1` laisse un petit espace entre les cases.
 
 ---
 
@@ -87,7 +91,7 @@ Le - 2 sur x1 et y1 laisse un petit espace entre les cases.
 self.canvas.bind("<Button-1>", self.on_canvas_click)
 ```
 
-Associe le clic gauche de souris sur le Canvas à la méthode on_canvas_click.
+- Associe le clic gauche de souris sur le Canvas à la méthode on_canvas_click.
 ```python
 def on_canvas_click(self, event):
     x = event.x // CELL_SIZE
@@ -102,11 +106,11 @@ def on_canvas_click(self, event):
             self.canvas.itemconfig(rect, fill="black")          # LED eteinte
 ```
 
-event.x, event.y : coordonnées (en pixels) du clic.
-Division entière par CELL_SIZE pour obtenir l’indice de colonne/ligne (x, y).
-Sécurité : on vérifie que (x, y) sont bien dans les bornes de la matrice.
-On inverse l’état logique led_state[y][x].
-On met à jour la couleur du rectangle correspondant (deep sky blue ou black).
+- `event.x`, `event.y` : coordonnées (en pixels) du clic.
+- Division entière par CELL_SIZE pour obtenir l’indice de colonne/ligne (`x`, `y`).
+- **Sécurité** : on vérifie que `(x, y)` sont bien dans les bornes de la matrice.
+- On inverse l’état logique `led_state[y][x]`.
+- On met à jour la couleur du rectangle correspondant (`deep sky blue` ou `black`).
 
 ## 4. Effacer la matrice
 ```python
@@ -121,9 +125,9 @@ def clear_matrix(self):
     self.result_text.insert("1.0", "Matrice effacee.\n")
 ```
 
-Remet toutes les cases de led_state à False.
-Repeint tous les rectangles en noir.
-Réinitialise la zone de texte.
+- Remet toutes les cases de `led_state` à `False`.
+- Repeint tous les rectangles en noir.
+- Réinitialise la zone de texte.
 
 ## 5. Génération des 4 mots de 32 bits
 ```python
@@ -145,7 +149,7 @@ def generer_mots(self):
 ```python
 index = y * MATRIX_WIDTH + x
 ```
-Numérotation en ligne :
+- Numérotation en ligne :
 
 ![numerotation](Assets/numerotation.png)
 
@@ -156,9 +160,8 @@ Numérotation en ligne :
 mot = index // 32   # division entiere
 bit = index % 32    # reste modulo 32
 ```
-
-mot ∈ {0,1,2,3} : lequel des 4 mots de 32 bits.
-bit ∈ {0..31} : numéro du bit dans ce mot.
+- `mot` ∈ {0,1,2,3} : lequel des 4 mots de 32 bits.
+- `bit` ∈ {0..31} : numéro du bit dans ce mot.
 
 ## 5.3 Mise à 1 du bit correspondant
 
@@ -166,8 +169,8 @@ bit ∈ {0..31} : numéro du bit dans ce mot.
 out[mot] |= (1 << bit)
 ```
 
-1 << bit : crée un masque avec le bit bit à 1.
-|= : met ce bit à 1 dans out[mot] (sans modifier les autres bits).
+`1 << bit` : crée un masque avec le bit `bit` à 1.
+`|=` : met ce bit à 1 dans out[mot] (sans modifier les autres bits).
 
 ## 6. Affichage du résultat en C
 ```python
