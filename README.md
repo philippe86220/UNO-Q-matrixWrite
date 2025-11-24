@@ -172,6 +172,11 @@ L’éditeur Python automatise ce calcul et affiche le résultat directement au 
 
 ---
 
+# Résultat :
+
+![Exemple 1](Assets/resultat.jpg)
+
+
 ### Crédit
 Outil développé par [philippe86220],  
 avec l’aide de ChatGPT (modèle GPT-5.1 Thinking) pour la conception de l’interface et la mise en forme du code.
