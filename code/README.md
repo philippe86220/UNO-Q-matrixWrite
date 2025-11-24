@@ -180,10 +180,10 @@ for i, val in enumerate(out):
 self.result_text.insert("end", "};\n")
 ```
 
-## 6.1 enumerate(out)
-Permet de récupérer à la fois :
-i : l’indice (0,1,2,3)
-val : la valeur de chaque mot
+## 6.1 `enumerate(out)`
+- Permet de récupérer à la fois :
+  - `i` : l’indice (0,1,2,3)
+  - `val` : la valeur de chaque mot
 
 ```python
 for i, val in enumerate(out):
@@ -195,8 +195,8 @@ for i, val in enumerate(out):
 comma = "," if i < 3 else ""
 ```
 
-Ajoute une virgule après les 3 premiers mots.
-Ne met pas de virgule après le dernier, pour obtenir :
+- Ajoute une virgule après les 3 premiers mots.
+- Ne met pas de virgule après le dernier, pour obtenir :
 
 ```c
 const uint32_t frame[4] = {
@@ -212,12 +212,13 @@ const uint32_t frame[4] = {
 ```python
 f"0x{val:08X}"
 ```
-val : entier Python
-:08X :
-0 : complète avec des zéros
-8 : sur 8 caractères
-X : en hexadécimal majuscule
-Exemple : si val = 0xAB, l’affichage sera 000000AB.
+- `val` : entier Python
+- `:08X` :
+  - `0` : complète avec des zéros
+  - `8` : sur 8 caractères
+  - `X` : en hexadécimal majuscule
+    
+Exemple : si `val = 0xAB`, l’affichage sera `000000AB`.
 
 ## 7. Copie dans le presse-papiers
 
@@ -231,9 +232,9 @@ def copy_to_clipboard(self):
     self.clipboard_append(content)
 ```
 
-Récupère tout le texte de la zone résultat.
-Le nettoie (strip()).
-Le copie dans le presse-papiers du système.
+- Récupère tout le texte de la zone résultat.
+- Le nettoie (`strip()`).
+- Le copie dans le presse-papiers du système.
 
 ## 8. Schéma récapitulatif du mapping LED → bits
 
