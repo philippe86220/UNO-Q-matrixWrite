@@ -53,9 +53,9 @@ Une fenêtre s’ouvre avec :
 ```c
 // Tableau a transmettre a matrixWrite()
 const uint32_t frame[4] = {
-    0x20360000,
-    0x11010409,
-    0x00100140,
+    0xB8000800,
+    0x9EE49524,
+    0x02489244,
     0x00000000
 };
 ```
@@ -71,9 +71,9 @@ extern "C" void matrixWrite(const uint32_t *buf);
 extern "C" void matrixBegin();
 
 const uint32_t frame[4] = {
-    0x20360000,
-    0x11010409,
-    0x00100140,
+    0xB8000800,
+    0x9EE49524,
+    0x02489244,
     0x00000000
 };
 
