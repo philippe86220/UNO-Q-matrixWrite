@@ -162,8 +162,8 @@ index = y * MATRIX_WIDTH + x
 mot = index // 32   # division entiere
 bit = index % 32    # reste modulo 32
 ```
-- `mot` ∈ {0,1,2,3} : lequel des 4 mots de 32 bits.
-- `bit` ∈ {0..31} : numéro du bit dans ce mot.
+- `mot` peut valoir 0, 1, 2 ou 3, car il désigne lequel des 4 mots de 32 bits contient la LED.
+- `bit` est un entier entre 0 et 31, car il désigne le numéro du bit à activer dans ce mot.
 
 ## 5.3 Mise à 1 du bit correspondant
 
