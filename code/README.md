@@ -139,9 +139,9 @@ def generer_mots(self):
         for x in range(MATRIX_WIDTH):
             if self.led_state[y][x]:
 
-                index = y * MATRIX_WIDTH + x   # 0..103
-                mot = index // 32             # 0..3
-                bit = index % 32              # 0..31
+                index = y * MATRIX_WIDTH + x   # 0 à 103
+                mot = index // 32             # 0 à 3
+                bit = index % 32              # 0 à 31
 
                 out[mot] |= (1 << bit)
 ```
