@@ -167,13 +167,13 @@ Grâce à cet éditeur, chaque frame de l’animation peut être dessinée visue
 - Les LEDs sont numérotées ligne par ligne :
 
 ```text
-index = y * 13 + x   // x = 0 à 12, y = 0 à 7
+index = y * 13 + x   # x = 0 à 12, y = 0 à 7
 ```
 Chaque LED correspond à un bit dans un des 4 mots de 32 bits :
 
 ```text
-mot = index // 32    // 0 à 3
-bit = index % 32     // 0 à 31
+mot = index // 32    # 0 à 3
+bit = index % 32     # 0 à 31
 ```
 
 - Si la LED est allumée, on met à 1 le bit correspondant :
