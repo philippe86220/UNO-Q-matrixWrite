@@ -26,9 +26,9 @@ sur l’Arduino UNO Q (cœur STM32).
 - Tkinter installé (inclus par défaut avec Python sur la plupart des systèmes) :
   - macOS : fourni avec Python officiel,
   - Windows : fourni avec l’installateur Python standard,
-  - Linux : parfois besoin d’installer **python3-tk** via le gestionnaire de paquets.  
+  - Linux : parfois besoin d’installer **python3-tk** via le gestionnaire de paquets, 
 
-- **Arduino App Lab 0.2.0 minimum**
+- **Arduino App Lab 0.2.0 minimum**.
 
 # Lancer l’éditeur :
 
