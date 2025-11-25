@@ -26,8 +26,9 @@ sur l’Arduino UNO Q (cœur STM32).
 - Tkinter installé (inclus par défaut avec Python sur la plupart des systèmes) :
   - macOS : fourni avec Python officiel,
   - Windows : fourni avec l’installateur Python standard,
-  - Linux : parfois besoin d’installer **python3-tk** via le gestionnaire de paquets.
-  - **Arduino App Lab 0.2.0**
+  - Linux : parfois besoin d’installer **python3-tk** via le gestionnaire de paquets.  
+
+- **Arduino App Lab 0.2.0 minimum**
 
 # Lancer l’éditeur :
 
@@ -61,7 +62,7 @@ const uint32_t frame[4] = {
 };
 ```
 4. Cliquer sur « Copier » pour copier ce code dans le presse-papiers.
-5. Coller ce bloc dans votre sketch UNO Q de votre projet **Arduino App Lab 0.2.0**
+5. Coller ce bloc dans votre sketch UNO Q de votre projet **Arduino App Lab**
 
 
 ---
